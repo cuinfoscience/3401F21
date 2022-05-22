@@ -1,0 +1,1 @@
+pandoc --from=markdown --output=/Users/abramhandler/Desktop/3401outline.pdf ~/everythingprivate/notes/vault/areas.teaching.3401.outline.md

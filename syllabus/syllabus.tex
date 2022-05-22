@@ -1,0 +1,354 @@
+ \documentclass[10pt]{memoir}
+
+% based on kieran healy's memoir modifications
+\usepackage{mako-mem}
+\chapterstyle{article-2}
+\pagestyle{mako-mem}
+
+\usepackage{ucs}
+\usepackage[utf8x]{inputenc}
+
+%\usepackage{kpfonts}
+%\usepackage[bitstream-charter]{mathdesign}
+\usepackage{fbb}
+\usepackage[T1]{fontenc}
+%\usepackage{textcomp}
+
+%\renewcommand{\rmdefault}{ugm}
+%\renewcommand{\sfdefault}{phv}
+
+% Packages for making a landscape table (?)
+\usepackage[table,usenames,dvipsnames]{xcolor}
+\usepackage{multirow, makecell}
+\usepackage{pdflscape}
+\usepackage{afterpage}
+
+\usepackage[letterpaper,left=1.125in,right=1.125in,top=1.25in,bottom=1.25in]{geometry}
+
+\usepackage{datenumber}
+\setdate{2020}{8}{24}
+\def\datedate{\datedayname,\space\datemonthname~\thedateday}
+
+\newcommand{\adddays}[1]{%
+    \addtocounter{datenumber}{#1}%
+    \setdatebynumber{\thedatenumber}%
+}
+
+% Common packages
+\usepackage{graphicx}
+\usepackage{enumerate}
+
+% Setup list environments
+\usepackage{enumitem}
+\setlist[description]{
+  topsep=0pt,
+  before=\vspace{0pt},
+  after=\vspace{0pt},
+  itemsep=2pt,
+  labelsep=0pt
+}
+
+\setlist[itemize]{
+    noitemsep, 
+    leftmargin=1em,
+    topsep=0pt}
+
+% Set paragraph indents and spacing
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{.5\baselineskip}
+%\usepackage[document]{ragged2e}
+
+% adjust section title formatting
+\usepackage{titlesec}
+\titlespacing\section{0pt}{8pt plus 2pt minus 2pt}{-6pt}
+\titlespacing\subsection{0pt}{8pt plus 2pt minus 2pt}{-6pt}
+\titlespacing\subsubsection{0pt}{8pt plus 2pt minus 2pt}{10pt}
+
+% allows full, in-line citations
+\usepackage{bibentry} 
+
+% add bibliographic stuff 
+\usepackage[round, numbers]{natbib} \def\citepos#1{\citeauthor{#1}'s (\citeyear{#1})} \def\citespos#1{\citeauthor{#1}' (\citeyear{#1})}
+\renewcommand{\bibnumfmt}[1]{}
+
+% define colors from http://www.colorado.edu/brand/visual-identity/typography-color
+%\usepackage[usenames,dvipsnames]{color}
+\definecolor{CUGold}{RGB}{207,184,124}
+\definecolor{CUDarkGray}{RGB}{86,90,92}
+\definecolor{CULightGray}{RGB}{162,164,163}
+
+% customize URLs
+\usepackage[hyphens]{url}
+%\usepackage{breakurl} 
+\usepackage[breaklinks, bookmarks, bookmarksopen]{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=Blue,
+    citecolor=Black,
+    filecolor=Blue,
+    urlcolor=Blue,
+    unicode=true,
+    breaklinks=true}
+
+% create a "reading list" environment to format the items
+\newenvironment{readinglist}{
+\begin{list}{}{\leftmargin=0pt \itemindent=0em}
+  \setlength{\itemsep}{8pt}
+  \setlength{\parskip}{0em}
+  \setlength{\parsep}{1em}
+  \setlength{\parindent}{8em}}
+{\end{list}}
+
+% Course/Instructor metadata -- alter as needed
+\def\mycoursename{Information Exploration}
+\def\mycourselisting{INFO 3401}
+\def\myclassroom{The course will meet remotely}
+\def\myzoomurl{https://cuboulder.zoom.us/j/96321757560}
+\def\mycanvasurl{https://canvas.colorado.edu/courses/76471}
+\def\mymeetingdays{Monday, Wednesday, Friday}
+\def\mymeetingtimes{12:40--1:30}
+\def\mydate{Fall 2021}
+
+\def\instructorAfirstname{Abram}
+\def\instructorAlastname{Handler}
+\def\instructorAfullname{\instructorAfirstname~\instructorAlastname}
+\def\instructorAtitle{Instructor, Information Science}
+\def\instructorAoffice{https://cuboulder.zoom.us/my/abehander}
+\def\instructorAemail{abram.handler@colorado.edu}
+\def\instructorAwebsite{https://www.abehandler.com/}
+\def\instructorAofficehours{4pm to 5pm Wednesday (and by appointment)}
+
+\begin{document}
+
+\nobibliography*
+
+%\baselineskip 14.2pt
+
+\title{
+    \textbf{\huge{\mycoursename}}\\
+    \vspace{5pt} \normalsize{\mycourselisting}; \mydate
+}
+
+\author{
+    \mymeetingdays; \mymeetingtimes\\
+    \myclassroom\\
+}
+
+\date{
+    \normalsize{
+        \href{\instructorAwebsite}{\textbf{\instructorAfullname}}\\
+        \instructorAtitle\\
+        E-mail: \href{mailto:\instructorAemail}{\instructorAemail}\\
+        \vspace{1em}
+        Office hours\\ \instructorAofficehours~\\ \instructorAoffice\\ \vspace{0em}
+    }
+}
+
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%
+%% Acknowledgements %%
+%%%%%%%%%%%%%%%%%%%%%%
+% This syllabus template was made in LaTeX by Brian Keegan and is distributed as Free Software under the GNU GPL v3. It was built using style templates created by Aaron Shaw, Benjamin Mako Hill, and Kieran Healy.
+
+% Original description: https://docs.google.com/document/d/1l7Qaop6Lmy7wkP_Jdb5JkeXNkrWVAMdZgQgj5uyvN8Q/edit#
+
+% Rationale
+% Information Exposition follows a series of courses in Information Science in computational methods, statistics, and human-centered methods. This course continues this line of study by showing students how to communicate and construct stories from what they learn, as well as instilling a critical understanding of ethics and the social implications of how we communicate information. The techniques and concepts learned in this course will be important for the upper-division project-based courses that Information Science majors will take.
+{\textbf{Canvas}: \href{\mycanvasurl}{\mycanvasurl}}\\
+{\textbf{Zoom}: \href{\myzoomurl}{\myzoomurl}}
+
+\section{\textbf{Course Description}}
+
+This course will develop students' skills in analyzing real world data in Python. Students will learn to collect, analyze, visualize, evaluate, analyze and communicate about data, in order to motivate new questions, make predictions, and work towards solutions. 
+
+The course will call upon the quantitative and computational skills students have developed in previous courses, and will increase their confidence and autonomy as data analysts and scientists who can deliver insights from diverse kinds of data.
+
+\subsection{Learning objectives}
+
+\begin{itemize}
+    \item Improve students' confidence analyzing tabular and relational data
+    \item Practice quantitative data analysis on real world datasets
+    \item Understand professional data science tools and methods
+    \item Develop students' ability to match questions to data to solutions
+    \item Think critically about the opportunities and limitations of data
+\end{itemize}
+
+\subsection{Course Design}
+Class will meet three times per week (\mymeetingdays)\space from \mymeetingtimes\space on Zoom. Student performance will be evaluated through Module Assignments, Module Quizzes, Participation, and a Final Project. There is no final exam.
+
+The class is split up into four units: 
+
+\begin{itemize}
+\item Manipulating tabular data with Python data analysis tools
+\item Working with relational data using SQL and Python data analysis tools
+\item Quantitative reasoning about data in groups
+\item Quantitative reasoning about tabular data
+\end{itemize}
+
+\subsection{Course Website and Materials}
+There is no textbook required for class, but there will be required readings, tutorials, and other material, which will be made available through Canvas. Once the semester begins, this PDF version of the syllabus will be revised infrequently and any revised requirements will be posted as announcements and updated course schedule to Canvas. The instructors reserve the right to make changes to the course's schedule, evaluation criteria, policies, \textit{etc.} through announcements in class and on Canvas, so please check Canvas regularly. If you have questions, please email \href{mailto:\instructorAemail}{Dr. \instructorAlastname}.
+
+
+% The first week of each module will be a ``show'' week dedicated to reviewing or introducing the method. The second week of each module will be a ``tell'' week dedicated to connecting the technique to larger social and ethical implications. In each week, Mondays will be a lecture providing motivation and background, Wednesdays will be a combination of lecture and exercises, and Fridays will be Weekly Presentations.
+
+\subsection{Prerequisites}
+Students should have completed the sequences of INFO 2201 and INFO 2301 or similar coursework covering intermediate computational reasoning and intermediate statistical reasoning before enrolling in \mycourselisting. If you have questions, please email \href{mailto:\instructorAemail}{Dr. \instructorAlastname}.
+
+\subsection{Computing Requirements}
+Students will need to use statistical computing software as well as teleconferencing software to participate in class. \href{http://jupyter.org/}{Jupyter notebooks} written in Python 3 will be used for all in-class examples and assignments. The \href{https://www.continuum.io/why-anaconda}{Anaconda distribution} of Python 3.5 (or above) is \textit{strongly} recommended to provide all of these programs and other libraries. Lectures will include exercises and presentations with the expectation that students participate with their own computers. If students do not have access to a computer to use for computing or Zoom, they should immediately email \href{mailto:\instructorAemail}{Dr. \instructorAlastname} to work out an alternative arrangement. Students are welcome to use an alternative \textit{programmatic} (\textit{not} Excel or Tableau) data analysis environment like R, Matlab, Julia, \textit{etc.}, but instructional support will only be provided for Anaconda and Python. Students who require technical assistance should email the instructors with the code and data they are working with, a summary of their debugging efforts to date, and attend an instructor's office hours.
+
+\subsection{Late work}
+The instructor understands that students are busy with many obligations. 
+Therefore, across the whole semester, you will be allotted a total of five free late days to turn in assignments. 
+If you turn in an assignment within 24 hours after the deadline you will be deducted 1 late day. 
+If you turn in an assignment within 48 hours after the deadline you will be deducted 2 late days, and so on. 
+If you have used five or fewer late days so far during the semester (including the most recent assignment) you will not be penalized for late work. 
+However, after you have used up your late days, late homework will not count for credit except in special circumstances.
+
+\subsection{In-class activities}
+I understand that stuff will come up during the semester. You might oversleep your alarm. Your laptop might break. You might have to take an emergency trip. So I will automatically drop your lowest 4 in-class activity scores at the end of the semester.
+
+\subsection{Evaluation} 
+Students will be evaluated through four different mechanisms. 
+
+\begin{itemize}%[itemsep=0pt,labelsep=0pt,leftmargin=1em]
+    
+    \item \textbf{Assignments}~(50\%). Assignments are intended to develop students' confidence and skill conducting their own exploratory data analyses. There will be roughly eight assignments in total. The format and evaluation criteria of each assignment will vary. The lowest module assignment grade will be automatically dropped.
+    
+    \item \textbf{Module Quizzes}~(20\%). Quizzes are intended to assess students' progress in learning the fundamental data analysis skills from the lectures and readings posted to Canvas. In the absence of an approved excuse, missed quizzes cannot be made up, but the lowest two quiz grades will be automatically dropped.
+
+
+    If you miss a quiz question, this indicates a gap in your knowledge. You are strongly encouraged to submit a correction explaining in detail what you missed, in order to get half credit back on the quiz. You can submit a correction for up to 1 week after a quiz. Correction link is here: \url{https://forms.gle/YHqtTCTjsEquJ32j8}
+    
+    \item \textbf{Attendance}~(5\%). Attendance will count for 5\% of the course grade. The instructor will take attendance on certain class days, chosen at random. You can miss five days without penalty. If you need to miss class you don't need to email the instructor. If I take attendance that day it will count towards your five missed day.
+    
+    \item \textbf{Final Project}~(25\%). The Final Project is intended to be a portfolio piece highlighting a student's ability to collect, analyze and visualize data. In the absence of an approved excuse, late Final Project submissions will be docked 2\% of their value for every hour elapsed since the deadline.
+\end{itemize}
+
+\section{\textbf{Course Outline}}
+
+The schedule will evolve throughout the semester, so please consult the schedule online at Canvas for the most up-to-date information.
+
+\section{\textbf{Schedule}}
+
+This course will be divided into four units. \\
+
+\begin{table}[htb!]
+\centering
+\begin{tabular}{lr}
+    \textbf{Topic} & \textbf{Week} \\
+    \cmidrule[.1em](lr){1-2}
+    \textit{Introduction} & 1  \\ % handling missing data, reshaping data, feature engineering
+    \textit{Getting started with pandas} & 2 \\ 
+    \textit{Reshaping data} & 3   \\ 
+    \textit{Feature engineering} & 4 
+ \\
+    \cmidrule[.1em](lr){1-2}
+\end{tabular}\\
+\caption{Manipulating tabular data with Python data analysis tools}
+\end{table}
+
+
+\begin{table}[htb!]
+\centering
+\begin{tabular}{lr}
+    \textbf{Topic} & \textbf{Week} \\
+    \cmidrule[.1em](lr){1-2}
+    \textit{SQL syntax} & 5  \\ % handling missing data, reshaping data, feature engineering
+    \textit{SQL join} & 6 \\ 
+    \textit{Group-by and aggregate} & 7   \\ 
+    \textit{Sqlite administration} & 8 
+ \\
+    \cmidrule[.1em](lr){1-2}
+\end{tabular}\\
+\caption{Working with relational data using SQL and Python data analysis tools}
+\end{table}
+
+\begin{table}[htb!]
+\centering
+\begin{tabular}{lr}
+    \textbf{Topic} & \textbf{Week} \\
+    \cmidrule[.1em](lr){1-2}
+    \textit{Hypothesis testing} & 9  \\ % handling missing data, reshaping data, feature engineering
+    \textit{Effect size} & 10  \\ 
+    \textit{Significance} & 11 \\ 
+    \textit{Power and sampling} & 12 
+ \\
+    \cmidrule[.1em](lr){1-2}
+\end{tabular}\\
+\caption{Quantitative reasoning about data in groups}
+\end{table}
+
+\begin{table}[htb!]
+\centering
+\begin{tabular}{lr}
+    \textbf{Topic} & \textbf{Week} \\
+    \cmidrule[.1em](lr){1-2}
+    \textit{Correlation} & 13 \\ % handling missing data, reshaping data, feature engineering
+    \textit{Regression} & 14 \\ 
+    \textit{Time series} & 15  \\ 
+    \textit{Prediction/forecasting} & 16 
+ \\
+    \cmidrule[.1em](lr){1-2}
+\end{tabular}\\
+\caption{ Quantitative reasoning about tabular data}
+\end{table}
+
+\pagebreak
+
+\section{Course Policies}
+
+% \subsection{Professional Expectations}
+% In addition to the expectations outlined in the \href{https://www.colorado.edu/creed/}{Colorado Creed}, we expect students to conduct themselves in a professional manner in their interactions
+
+\subsection{In-Class Confidentiality}
+The success of this class depends on students feeling comfortable sharing questions, ideas, concerns, and confusions about assignments, work-in-progress, and their personal experiences. Students may read, comment, and run on classmates' writing, code, and other class-related content for the sole purpose of use within this class. However, students may not use, run, copy, perform, display, distribute, modify, translate, or create derivative works of another student's work outside of this class without that student's expressed written consent or formal license. Furthermore, students may not create any audio, video, or other records during class time without the instructor's permission nor may students publicly share comments made in class attributable to another person's identity without that person's permission.
+
+% \subsection{Critical Response Process}
+% The class will make regular use of Liz Lerman's ``\href{https://lizlerman.com/critical-response-process/}{Critical Response Process}'' for the Weekly Presentations and the Final Project. The details of this process will be covered in more detail in Week 1, but students will rotate through the roles of ``artist'' and ``responder'' regularly. Students are expected to participate in good faith when sharing statements of meaning, questions, neutral questions, and permissioned opinions.
+
+\subsection{Instructor Interaction}
+Dr.\ Handler will check e-mail between 8:00 and 18:00 on non-holiday business days and try to respond to emails within 24 hours. They welcome online or offline interactions outside of class, however these are not appropriate spaces for discussing class matters. E-mailing \href{\instructorAemail}{Dr. Handler} or coming to (remote) office hours are the best ways to get help and feedback outside of lecture.
+
+\subsection{Accommodations for Disabilities}
+We are committed to providing everyone the support and services needed to participate in this course. If you qualify for accommodations because of a disability, please submit your accommodation letter from Disability Services to the instructor in a timely manner so that your needs can be addressed. Disability Services determines accommodations based on documented disabilities in the academic environment. Information on requesting accommodations is located on the \href{Disability Services website}{www.colorado.edu/disabilityservices/students}. Contact Disability Services at 303-492-8671 or \href{mailto:dsinfo@colorado.edu}{dsinfo@colorado.edu} for further assistance. If you have a temporary medical condition or injury, see Temporary Medical Conditions under the Students tab on the Disability Services website and discuss your needs with the instructors.
+
+\subsection{Religious Observance}
+Campus policy regarding \href{http://www.colorado.edu/policies/observance-religious-holidays-and-absences-classes-andor-exams}{religious observances} requires that faculty make every effort to deal reasonably and fairly with all students who, because of religious obligations, have conflicts with scheduled exams, assignments or required assignments/attendance. If this applies to you, please e-mail \href{\instructorAemail}{Dr. Handler} as soon as possible to make the appropriate accommodations.
+
+\subsection{Classroom Behavior}
+Students and instructors each have responsibility for maintaining an appropriate learning environment. Those who fail to adhere to such behavioral standards may be subject to discipline. Professional courtesy and sensitivity are especially important with respect to individuals and topics dealing with differences of race, color, culture, religion, creed, politics, veteran’s status, sexual orientation, gender, gender identity and gender expression, age, ability, and nationality. Class rosters are provided to the instructor with the student's legal name. The instructor will honor your request to address you by an alternate name or gender pronoun. Please advise the instructors of this preference early in the semester so that we may make appropriate changes. For more information, see the policies on \href{http://www.colorado.edu/policies/student-classroom-and-course-related-behavior}{class behavior} and the \href{http://www.colorado.edu/osc/#student_code}{student code}.
+
+\subsection{Harassment and Discrimination}
+The University of Colorado Boulder (CU Boulder) is committed to maintaining a positive learning, working, and living environment. CU Boulder will not tolerate acts of sexual misconduct, discrimination, harassment or related retaliation against or by any employee or student. CU's \href{http://www.colorado.edu/policies/discrimination-and-harassment-policy-and-procedures}{Sexual Misconduct Policy} prohibits sexual assault, sexual exploitation, sexual harassment, intimate partner abuse (dating or domestic violence), stalking or related retaliation. CU Boulder's \href{http://www.colorado.edu/policies/discrimination-and-harassment-policy-and-procedures}{Discrimination and Harassment Policy} prohibits discrimination, harassment or related retaliation based on race, color, national origin, sex, pregnancy, age, disability, creed, religion, sexual orientation, gender identity, gender expression, veteran status, political affiliation or political philosophy. Individuals who believe they have been subject to misconduct under either policy should contact the Office of Institutional Equity and Compliance (OIEC) at 303-492-2127. Information about the OIEC, the above referenced policies, and the campus resources available to assist individuals regarding sexual misconduct, discrimination, harassment or related retaliation can be found at the \href{http://www.colorado.edu/institutionalequity/}{OIEC website}.
+
+\subsection{Honor Code}
+All students enrolled in a University of Colorado Boulder course are responsible for knowing and adhering to the \href{http://www.colorado.edu/policies/academic-integrity-policy}{academic integrity policy} of the institution. Violations of the policy may include: plagiarism, cheating, fabrication, lying, bribery, threat, unauthorized access to academic materials, clicker fraud, resubmission, and aiding academic dishonesty. All incidents of academic misconduct will be reported to the Honor Code Council (\href{mailto:honor@colorado.edu}{honor@colorado.edu}; 303-735-2273). Students who are found responsible for violating the academic integrity policy will be subject to nonacademic sanctions from the Honor Code Council as well as academic sanctions from the faculty member. Additional information can be found at \href{http://honorcode.colorado.edu}{honorcode.colorado.edu}. 
+
+\input{cmcidei}
+
+\input{covid}
+
+\section{Acknowledgements}
+% The design and format of this course borrows from other courses.
+% \begin{itemize}[itemsep=1em]
+%     \item Bergstrom, Carl \& West, Jevin (2017). \href{http://callingbullshit.org/index.html}{\textit{Calling Bullshit}}. University of Washington.
+% \end{itemize}
+
+This syllabus was typeset in \LaTeX~using \href{http://www.sharelatex.com}{Overleaf} with the \href{http://www.tug.dk/FontCatalogue/fbb/}{fbb/Bembo} font and is derived from the \texttt{memoir} styles adapted by \href{https://github.com/kjhealy/latex-custom-kjh}{Kieran Healy} and \href{http://projects.mako.cc/source/?p=latex_mako;a=summary}{Benjamin `Mako' Hill}.
+
+%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%
+%%% COURSE OUTLINE %%%
+%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%
+\clearpage
+
+
+\renewcommand{\bibsection}{\section{\huge \bibname}\prebibhook}
+\baselineskip 14.2pt
+\nobibliography{refs}
+\bibliographystyle{apalike}
+
+\end{document}
